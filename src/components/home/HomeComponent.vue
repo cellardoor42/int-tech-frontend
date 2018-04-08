@@ -40,22 +40,8 @@
     </md-card>
 
     <div id="guest-index-cards-wrapper" v-if="userRole === 0">
-      <md-card md-with-hover class="index-card">
-      <md-card-header>
-        <md-card-header-text>
-          <div class="md-title">Популярные фильмы</div>
-          <div class="md-subhead">Топ 10</div>
-        </md-card-header-text>
-
-        <md-card-media md-medium>
-          <md-icon class="md-size-5x">local_movies</md-icon>
-        </md-card-media>
-      </md-card-header>
-    </md-card>
-    </div>
-
-    <div id="index-cards-wrapper" v-if="userRole > 0">
-      <md-card md-with-hover class="index-card">
+      <router-link to="/popular">
+        <md-card md-with-hover class="index-card">
         <md-card-header>
           <md-card-header-text>
             <div class="md-title">Популярные фильмы</div>
@@ -67,32 +53,54 @@
           </md-card-media>
         </md-card-header>
       </md-card>
+      </router-link>
+    </div>
 
-      <md-card md-with-hover class="index-card">
-        <md-card-header>
-          <md-card-header-text>
-            <div class="md-title">Мои фильмы</div>
-            <div class="md-subhead">Оценки и просмотры</div>
-          </md-card-header-text>
+    <div id="index-cards-wrapper" v-if="userRole > 0">
+      <router-link to="/popular">
+        <md-card md-with-hover class="index-card">
+          <md-card-header>
+            <md-card-header-text>
+              <div class="md-title">Популярные фильмы</div>
+              <div class="md-subhead">Топ 10</div>
+            </md-card-header-text>
 
-          <md-card-media md-medium>
-            <md-icon class="md-size-5x">stars</md-icon>
-          </md-card-media>
-        </md-card-header>
-      </md-card>
+            <md-card-media md-medium>
+              <md-icon class="md-size-5x">local_movies</md-icon>
+            </md-card-media>
+          </md-card-header>
+        </md-card>
+      </router-link>
 
-      <md-card md-with-hover class="index-card">
-        <md-card-header>
-          <md-card-header-text>
-            <div class="md-title">Мой профиль</div>
-            <div class="md-subhead">Личный кабинет</div>
-          </md-card-header-text>
+      <router-link to="/favourites">
+        <md-card md-with-hover class="index-card">
+          <md-card-header>
+            <md-card-header-text>
+              <div class="md-title">Мои фильмы</div>
+              <div class="md-subhead">Оценки и просмотры</div>
+            </md-card-header-text>
 
-          <md-card-media md-medium>
-            <md-icon class="md-size-5x">person</md-icon>
-          </md-card-media>
-        </md-card-header>
-      </md-card>
+            <md-card-media md-medium>
+              <md-icon class="md-size-5x">stars</md-icon>
+            </md-card-media>
+          </md-card-header>
+        </md-card>
+      </router-link>
+
+      <router-link to="/profile">
+        <md-card md-with-hover class="index-card">
+          <md-card-header>
+            <md-card-header-text>
+              <div class="md-title">Мой профиль</div>
+              <div class="md-subhead">Личный кабинет</div>
+            </md-card-header-text>
+
+            <md-card-media md-medium>
+              <md-icon class="md-size-5x">person</md-icon>
+            </md-card-media>
+          </md-card-header>
+        </md-card>
+      </router-link>
     </div>
   </div>
 </template>

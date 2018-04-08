@@ -2,6 +2,10 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import HomeComponent from './components/home/HomeComponent'
+import PopularMoviesComponent from './components/movies/PopularMoviesComponent'
+import MyFavouritesComponent from './components/movies/MyFavouritesComponent'
+import DetailsComponent from './components/movies/DetailsComponent'
+import ProfileComponent from './components/profile/ProfileComponent'
 import LoginComponent from './components/login/LoginComponent'
 import SignUpComponent from './components/login/SignUpComponent'
 import NotFoundComponent from './components/notfound/NotFoundComponent'
@@ -17,6 +21,38 @@ export default new Router({
       component: HomeComponent,
       meta: {
         title: 'Домашняя страница'
+      }
+    },
+    {
+      path: '/popular',
+      name: 'popular',
+      component: PopularMoviesComponent,
+      meta: {
+        title: 'Популярные фильмы'
+      }
+    },
+    {
+      path: '/favourites',
+      name: 'favourites',
+      component: MyFavouritesComponent,
+      meta: {
+        title: 'Мои фильмы'
+      }
+    },
+    {
+      path: '/details',
+      name: 'details',
+      component: DetailsComponent,
+      meta: {
+        title: 'О фильме'
+      }
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      component: ProfileComponent,
+      meta: {
+        title: 'Профиль'
       }
     },
     {

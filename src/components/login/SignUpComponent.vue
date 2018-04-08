@@ -49,7 +49,7 @@
 
 <style lang="sass">
   #signup-wrapper
-    background-image: url('../../assets/images/caleb-george-69656-unsplash.jpg')
+    background-image: url('../../assets/images/igor-ovsyannykov-440148-unsplash.jpg')
 
   #signup-card
     padding: 30px

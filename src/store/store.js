@@ -4,7 +4,7 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 var state = {
-  userRole: 0,
+  userRole: 1,
   currentRoute: '/'
 }
 

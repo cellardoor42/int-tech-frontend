@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import VueResource from 'vue-resource'
 import App from './App.vue'
 import router from './router'
 import store from './store/store'
@@ -9,6 +10,7 @@ import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/black-green-light.css'
 import './assets/main.sass'
 
+Vue.use(VueResource)
 Vue.use(VueMaterial)
 
 Vue.config.productionTip = false

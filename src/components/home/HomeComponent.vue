@@ -11,7 +11,7 @@
       <md-field>
         <md-icon>search</md-icon>
         <label>Поиск</label>
-        <md-input v-model="search"></md-input>
+        <md-input v-model="search" v-on:keyup="setContextQuery()"></md-input>
         <md-button class="md-icon-button md-dense" v-if="search !== ''" v-on:click="search = ''">
           <md-icon>clear</md-icon>
         </md-button>
@@ -33,10 +33,26 @@
         </md-field>
 
         <md-button>Сбросить</md-button>
-        <md-button>Применить</md-button>
+        <md-button v-on:click="setExQuery()">Применить</md-button>
       </div>
 
       <!-- query results displayed here -->
+      <md-list class="md-triple-line" v-if="movies.length > 0">
+        <md-list-item v-for="movie in movies">
+          <div class="md-list-item-text">
+            <span>{{ movie.title }}</span>
+            <span><b>Режиссер:</b> {{ movie.director }}</span>
+            <p>
+              <b>Жанр: </b>
+              <label v-for="genre, index in movie.genre">{{ genre }}<label v-if="index < movie.genre.length - 1">, </label></label>
+            </p>
+          </div>
+
+          <md-button class="md-icon-button md-list-action">
+            <md-icon class="md-primary">star</md-icon>
+          </md-button>
+        </md-list-item>
+      </md-list>
     </md-card>
 
     <div id="guest-index-cards-wrapper" v-if="userRole === 0">
@@ -112,6 +128,7 @@
     name: 'HomeComponent',
     data () {
       return {
+        movies: [],
         loginBtnTitile: '',
         search: '',
         userRole: null,
@@ -120,7 +137,8 @@
           director: '',
           genre: '',
           year: ''
-        }
+        },
+        exQueryString: ''
       }
     },
     created: function () {
@@ -133,6 +151,24 @@
         default: {
           this.loginBtnTitile = 'Выход'
         }
+      }
+    },
+    methods: {
+      setContextQuery: function () {
+        setTimeout(() => {
+          this.$http.get('http://localhost:8000/movies?title=' + this.search).then(response => {
+            this.movies = response.body;
+              console.log(this.movies);
+          })
+        }, 500);
+      },
+      setExQuery: function () {
+        for (let item in this.exQuery) {
+          if (this.exQuery.hasOwnProperty(item)) {
+            this.exQueryString += '&' + item + '=' + this.exQuery[item]
+          }
+        }
+        console.log(this.exQueryString)
       }
     }
   }

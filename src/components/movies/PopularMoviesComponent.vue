@@ -13,6 +13,22 @@
         <span class="md-title">Рейтинг самых популярных фильмов</span>
 
         <!-- movies list here -->
+        <md-list class="md-triple-line" v-if="movies.length > 0">
+            <md-list-item v-for="movie in movies">
+                <div class="md-list-item-text">
+                    <span>{{ movie.title }}</span>
+                    <span><b>Режиссер:</b> {{ movie.director }}</span>
+                    <p>
+                        <b>Жанр: </b>
+                        <label v-for="genre, index in movie.genre">{{ genre }}<label v-if="index < movie.genre.length - 1">, </label></label>
+                    </p>
+                </div>
+
+                <md-button class="md-icon-button md-list-action">
+                    <md-icon class="md-primary">star</md-icon>
+                </md-button>
+            </md-list-item>
+        </md-list>
     </md-card>
   </div>
 </template>
@@ -24,7 +40,8 @@
     name: 'PopularMoviesComponent',
     data () {
       return {
-        loginBtnTitle: ''
+        loginBtnTitle: '',
+        movies: []
       }
     },
     created: function () {
@@ -38,6 +55,11 @@
           this.loginBtnTitile = 'Выход'
         }
       }
+    },
+    mounted: function () {
+      this.$http.get(store.state.httpConfig.host + store.state.httpConfig.movies + '?rating=10').then(response => {
+        this.movies = response.body
+      })
     }
   }
 </script>

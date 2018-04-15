@@ -156,19 +156,27 @@
     methods: {
       setContextQuery: function () {
         setTimeout(() => {
-          this.$http.get('http://localhost:8000/movies?title=' + this.search).then(response => {
-            this.movies = response.body;
-              console.log(this.movies);
+          let _url = store.state.httpConfig.host + store.state.httpConfig.movies + '?title=' + this.search + this.exQueryString
+          this.$http.get(_url).then(response => {
+            this.movies = response.body
+              console.log(this.movies)
           })
         }, 500);
       },
       setExQuery: function () {
+        this.exQueryString = ''
         for (let item in this.exQuery) {
           if (this.exQuery.hasOwnProperty(item)) {
-            this.exQueryString += '&' + item + '=' + this.exQuery[item]
+            if (this.exQuery[item] !== '') {
+              this.exQueryString += '&' + item + '=' + this.exQuery[item]
+            }
           }
         }
         console.log(this.exQueryString)
+        let _url = store.state.httpConfig.host + store.state.httpConfig.movies + '?title=' + this.search + this.exQueryString
+        this.$http.get(_url).then(response => {
+          this.movies = response.body
+        })
       }
     }
   }

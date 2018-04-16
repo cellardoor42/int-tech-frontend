@@ -15,6 +15,10 @@
         <!-- movies list here -->
         <md-list class="md-triple-line" v-if="movies.length > 0">
             <md-list-item v-for="movie in movies">
+                <md-avatar>
+                    <img :src="movie.posterUrl" alt="poster">
+                </md-avatar>
+
                 <div class="md-list-item-text">
                     <span>{{ movie.title }}</span>
                     <span><b>Режиссер:</b> {{ movie.director }}</span>

@@ -12,7 +12,7 @@
         <md-icon>search</md-icon>
         <label>Поиск</label>
         <md-input v-model="search" v-on:keyup="setContextQuery()"></md-input>
-        <md-button class="md-icon-button md-dense" v-if="search !== ''" v-on:click="search = ''">
+        <md-button class="md-icon-button md-dense" v-if="search !== ''" v-on:click="resetContextQuery()">
           <md-icon>clear</md-icon>
         </md-button>
       </md-field>
@@ -23,16 +23,29 @@
           <label>Режиссер</label>
           <md-input v-model="exQuery.director"></md-input>
         </md-field>
-        <md-field>
-          <label>Жанр</label>
-          <md-input v-model="exQuery.genre"></md-input>
-        </md-field>
+        <!--<md-field>-->
+          <!--<label>Жанр</label>-->
+          <!--<md-input v-model="exQuery.genre"></md-input>-->
+        <!--</md-field>-->
+          <md-field>
+              <label for="genre">Жанр</label>
+              <md-select v-model="exQuery.genre" name="genre" id="genre" multiple>
+                  <md-option value="драма">драма</md-option>
+                  <md-option value="комедия">комедия</md-option>
+                  <md-option value="мелодрама">мелодрама</md-option>
+                  <md-option value="фантастика">фантастика</md-option>
+                  <md-option value="триллер">триллер</md-option>
+                  <md-option value="ужасы">ужасы</md-option>
+                  <md-option value="криминал">криминал</md-option>
+                  <md-option value="детектив">детектив</md-option>
+              </md-select>
+          </md-field>
         <md-field>
           <label>Год</label>
-          <md-input v-model="exQuery.year" type="number"></md-input>
+          <md-input v-model="exQuery.year"></md-input>
         </md-field>
 
-        <md-button>Сбросить</md-button>
+        <md-button v-on:click="resetExQuery()">Сбросить</md-button>
         <md-button v-on:click="setExQuery()">Применить</md-button>
       </div>
 
@@ -139,7 +152,7 @@
         exSearch: false,
         exQuery: {
           director: '',
-          genre: '',
+          genre: [],
           year: ''
         },
         exQueryString: ''
@@ -158,29 +171,46 @@
       }
     },
     methods: {
-      setContextQuery: function () {
-        setTimeout(() => {
+      getMovies: function () {
+        if (this.search === '' && this.exQueryString === '') {
+          this.movies = []
+        } else {
           let _url = store.state.httpConfig.host + store.state.httpConfig.movies + '?title=' + this.search + this.exQueryString
           this.$http.get(_url).then(response => {
             this.movies = response.body
-              console.log(this.movies)
+            console.log(this.movies)
           })
+        }
+      },
+      setContextQuery: function () {
+        setTimeout(() => {
+          this.getMovies()
         }, 500);
+      },
+      resetContextQuery: function () {
+        this.search = ''
+        this.movies = []
       },
       setExQuery: function () {
         this.exQueryString = ''
         for (let item in this.exQuery) {
           if (this.exQuery.hasOwnProperty(item)) {
-            if (this.exQuery[item] !== '') {
+            if (this.exQuery[item].length > 0) {
               this.exQueryString += '&' + item + '=' + this.exQuery[item]
             }
           }
         }
         console.log(this.exQueryString)
-        let _url = store.state.httpConfig.host + store.state.httpConfig.movies + '?title=' + this.search + this.exQueryString
-        this.$http.get(_url).then(response => {
-          this.movies = response.body
-        })
+        this.getMovies()
+      },
+      resetExQuery: function () {
+        this.exQueryString = ''
+        this.exQuery = {
+          director: '',
+          genre: [],
+          year: ''
+        }
+        this.getMovies()
       }
     }
   }

@@ -10,8 +10,12 @@ import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/black-green-light.css'
 import './assets/main.sass'
 
+import detailsMixin from "./mixins/detailsMixin"
+
 Vue.use(VueResource)
 Vue.use(VueMaterial)
+
+Vue.mixin(detailsMixin)
 
 Vue.config.productionTip = false
 

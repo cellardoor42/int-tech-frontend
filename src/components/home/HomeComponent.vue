@@ -23,10 +23,6 @@
           <label>Режиссер</label>
           <md-input v-model="exQuery.director"></md-input>
         </md-field>
-        <!--<md-field>-->
-          <!--<label>Жанр</label>-->
-          <!--<md-input v-model="exQuery.genre"></md-input>-->
-        <!--</md-field>-->
           <md-field>
               <label for="genre">Жанр</label>
               <md-select v-model="exQuery.genre" name="genre" id="genre" multiple>
@@ -51,7 +47,7 @@
 
       <!-- query results displayed here -->
       <md-list class="md-triple-line" v-if="movies.length > 0">
-        <md-list-item v-for="movie in movies">
+        <md-list-item v-for="movie in movies" v-on:click="goToMovieDetails(movie._id)">
           <md-avatar>
             <img :src="movie.posterUrl" alt="poster">
           </md-avatar>

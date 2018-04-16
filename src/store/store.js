@@ -11,7 +11,8 @@ var state = {
     userRoles: '/user_roles'
   },
   userRole: 1,
-  currentRoute: '/'
+  currentRoute: '/',
+  detailsMovieId: null
 }
 
 export default new Vuex.Store({ state })

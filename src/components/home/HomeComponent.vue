@@ -3,7 +3,7 @@
     <md-toolbar>
       <span class="md-title">Hollywood | Домашняя страница</span>
       <div class="md-toolbar-section-end">
-        <router-link to="/login"><md-button>{{ loginBtnTitile }}</md-button></router-link>
+        <md-button v-on:click="loginHook()">{{ loginBtnTitile }}</md-button>
       </div>
     </md-toolbar>
 
@@ -85,7 +85,7 @@
       </router-link>
     </div>
 
-    <div id="index-cards-wrapper" v-if="userRole > 0">
+    <div id="index-cards-wrapper" v-else>
       <router-link to="/popular">
         <md-card md-with-hover class="index-card">
           <md-card-header>
@@ -163,6 +163,7 @@
         }
         default: {
           this.loginBtnTitile = 'Выход'
+          break
         }
       }
     },
@@ -207,6 +208,15 @@
           year: ''
         }
         this.getMovies()
+      },
+
+      loginHook: function () {
+        if (store.state.userRole === 0) {
+          this.$router.push('/login')
+        } else {
+          this.loginBtnTitile = 'Вход'
+          this.logout()
+        }
       }
     }
   }

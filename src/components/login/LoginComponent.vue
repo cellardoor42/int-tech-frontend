@@ -9,16 +9,17 @@
       <md-card-content>
         <md-field>
           <label>Логин</label>
-          <md-input v-model="login"></md-input>
+          <md-input v-model="username" required></md-input>
         </md-field>
         <md-field>
           <label>Пароль</label>
-          <md-input v-model="password" type="password"></md-input>
+          <md-input v-model="password" type="password" required></md-input>
         </md-field>
       </md-card-content>
 
       <md-card-actions>
-        <router-link to="/"><md-button>Войти</md-button></router-link>
+        <!--<router-link to="/"><md-button>Войти</md-button></router-link>-->
+          <md-button v-on:click="beforeLogin()">Войти</md-button>
       </md-card-actions>
 
       <div style="text-align: center; margin-top: 50px;">
@@ -35,8 +36,17 @@
     name: 'LoginComponent',
     data () {
       return {
-        login: '',
+        username: '',
         password: ''
+      }
+    },
+    methods: {
+      beforeLogin: function () {
+        let _request = {
+          username: this.username,
+          password: this.password
+        }
+        this.login(JSON.stringify(_request))
       }
     }
   }

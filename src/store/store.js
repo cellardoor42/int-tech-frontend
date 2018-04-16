@@ -8,9 +8,11 @@ var state = {
     host: 'http://localhost:8000',
     movies: '/movies',
     users: '/users',
-    userRoles: '/user_roles'
+    userRoles: '/user_roles',
+    login: '/login'
   },
-  userRole: 1,
+  user: null,
+  userRole: 0,
   currentRoute: '/',
   detailsMovieId: null
 }

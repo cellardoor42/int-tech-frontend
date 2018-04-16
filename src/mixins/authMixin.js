@@ -4,7 +4,6 @@ export default {
   methods: {
     login: function (request) {
       console.log('LOGIN')
-      console.log(JSON.parse(request))
       let _url = store.state.httpConfig.host + store.state.httpConfig.login
       this.$http.post(_url, JSON.parse(request)).then(response => {
         console.log(response.body)

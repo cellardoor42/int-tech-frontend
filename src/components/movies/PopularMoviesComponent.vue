@@ -4,7 +4,7 @@
       <span class="md-title">Hollywood | Популярные фильмы</span>
       <div class="md-toolbar-section-end">
         <router-link to="/"><md-button>На главную</md-button></router-link>
-        <router-link to="/login"><md-button>{{ loginBtnTitile }}</md-button></router-link>
+        <md-button v-on:click="loginHook()">{{ loginBtnTitile }}</md-button>
       </div>
     </md-toolbar>
 
@@ -48,8 +48,21 @@
         movies: []
       }
     },
+    computed: {
+      userRole: function () {
+        return store.state.userRole
+      }
+    },
+    watch: {
+      userRole: function (newValue, oldValue) {
+        if (newValue === 0) {
+          this.loginBtnTitle = 'Вход'
+        } else {
+          this.loginBtnTitle = 'Выход'
+        }
+      }
+    },
     created: function () {
-      this.userRole = store.state.userRole
       switch (store.state.userRole) {
         case 0: {
           this.loginBtnTitile = 'Вход'
@@ -64,6 +77,16 @@
       this.$http.get(store.state.httpConfig.host + store.state.httpConfig.movies + '?rating=10').then(response => {
         this.movies = response.body
       })
+    },
+    methods: {
+      loginHook: function () {
+        if (store.state.userRole === 0) {
+          this.$router.push('/login')
+        } else {
+          this.loginBtnTitile = 'Вход'
+          this.logout()
+        }
+      }
     }
   }
 </script>

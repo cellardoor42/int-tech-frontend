@@ -3,7 +3,7 @@
     <md-toolbar>
       <span class="md-title">Hollywood | Домашняя страница</span>
       <div class="md-toolbar-section-end">
-        <md-button v-on:click="loginHook()">{{ loginBtnTitile }}</md-button>
+        <md-button v-on:click="loginHook()">{{ loginBtnTitle }}</md-button>
       </div>
     </md-toolbar>
 
@@ -142,9 +142,8 @@
     data () {
       return {
         movies: [],
-        loginBtnTitile: '',
+        loginBtnTitle: '',
         search: '',
-        userRole: null,
         exSearch: false,
         exQuery: {
           director: '',
@@ -154,15 +153,28 @@
         exQueryString: ''
       }
     },
+    computed: {
+      userRole: function () {
+        return store.state.userRole
+      }
+    },
+    watch: {
+      userRole: function (newValue, oldValue) {
+        if (newValue === 0) {
+          this.loginBtnTitile = 'Вход'
+        } else {
+          this.loginBtnTitle = 'Выход'
+        }
+      }
+    },
     created: function () {
-      this.userRole = store.state.userRole
       switch (store.state.userRole) {
         case 0: {
-          this.loginBtnTitile = 'Вход'
+          this.loginBtnTitle = 'Вход'
           break
         }
         default: {
-          this.loginBtnTitile = 'Выход'
+          this.loginBtnTitle = 'Выход'
           break
         }
       }

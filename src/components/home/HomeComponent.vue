@@ -47,12 +47,12 @@
 
       <!-- query results displayed here -->
       <md-list class="md-triple-line" v-if="movies.length > 0">
-        <md-list-item v-for="movie in movies" v-on:click="goToMovieDetails(movie._id)">
+        <md-list-item v-for="movie in movies">
           <md-avatar>
-            <img :src="movie.posterUrl" alt="poster">
+            <img :src="movie.posterUrl" alt="poster" v-on:click="goToMovieDetails(movie._id)">
           </md-avatar>
 
-          <div class="md-list-item-text">
+          <div class="md-list-item-text" v-on:click="goToMovieDetails(movie._id)">
             <span>{{ movie.title }}</span>
             <span><b>Режиссер:</b> {{ movie.director }}</span>
             <p>
@@ -61,8 +61,9 @@
             </p>
           </div>
 
-          <md-button class="md-icon-button md-list-action">
-            <md-icon class="md-primary">star</md-icon>
+          <md-button class="md-icon-button md-list-action" v-if="userRole !== 0" v-on:click="addToFavs(movie._id)">
+            <md-icon class="md-primary" v-if="!favs.includes(movie._id)">star_outline</md-icon>
+            <md-icon class="md-primary" v-if="favs.includes(movie._id)">star</md-icon>
           </md-button>
         </md-list-item>
       </md-list>
@@ -142,6 +143,7 @@
     data () {
       return {
         movies: [],
+        favs: [],
         loginBtnTitle: '',
         search: '',
         exSearch: false,
@@ -154,11 +156,17 @@
       }
     },
     computed: {
+      user: function () {
+        return store.state.user
+      },
       userRole: function () {
         return store.state.userRole
       }
     },
     watch: {
+      user: function (newstate, oldState) {
+        this.favs = newstate.favIds
+      },
       userRole: function (newValue, oldValue) {
         if (newValue === 0) {
           this.loginBtnTitile = 'Вход'
@@ -178,6 +186,8 @@
           break
         }
       }
+
+      this.favs = store.state.user.favIds
     },
     methods: {
       getMovies: function () {

@@ -9,7 +9,12 @@
         </md-toolbar>
 
         <md-card class="content-card" v-if="movie !== null">
-            <h1 class="md-display-2">{{ movie.title }}</h1>
+            <h1 class="md-display-2">{{ movie.title }}
+                <md-button class="md-icon-button md-fab md-accent" v-if="userRole !== 0" v-on:click="addToFavs(movie._id)">
+                    <md-icon class="md-primary" v-if="!favs.includes(movie._id)">star_outline</md-icon>
+                    <md-icon class="md-primary" v-if="favs.includes(movie._id)">star</md-icon>
+                </md-button>
+            </h1>
             <img class="poster" :src="movie.posterUrl">
             <span class="md-subheading"><b>Режиссер: </b>{{ movie.director }}</span><br>
             <span class="md-subheading"><b>Жанр: </b></span>
@@ -34,7 +39,8 @@
     data () {
       return {
         loginBtnTitle: '',
-        movie: null
+        movie: null,
+        favs: []
       }
     },
     computed: {
@@ -61,6 +67,7 @@
           this.loginBtnTitle = 'Выход'
         }
       }
+      this.favs = store.state.user.favIds
     },
     mounted: function () {
       if (store.state.detailsMovieId === null) {

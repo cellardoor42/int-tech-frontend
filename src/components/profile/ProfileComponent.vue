@@ -43,7 +43,7 @@
     created: function () {
       switch (store.state.userRole) {
         case 0: {
-          this.loginBtnTitile = 'Вход'
+          this.loginBtnTitle = 'Вход'
           break
         }
         default: {

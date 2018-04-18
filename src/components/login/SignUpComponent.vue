@@ -9,7 +9,7 @@
       <md-card-content>
         <md-field>
           <label>Логин</label>
-          <md-input v-model="login"></md-input>
+          <md-input v-model="username"></md-input>
         </md-field>
         <md-field>
           <label>Пароль</label>
@@ -22,7 +22,7 @@
       </md-card-content>
 
       <md-card-actions>
-        <router-link to="/"><md-button>Зарегистрироваться</md-button></router-link>
+        <md-button v-on:click="submit()">Зарегистрироваться</md-button>
       </md-card-actions>
 
       <div style="text-align: center; margin-top: 50px;">
@@ -35,13 +35,32 @@
 </template>
 
 <script>
+  import store from '../../store/store'
   export default {
     name: 'SignUpComponent',
     data () {
       return {
-        login: '',
+        username: '',
         password: '',
         passwordRepeat: ''
+      }
+    },
+    methods: {
+      submit: function () {
+        if (this.password !== this.passwordRepeat) {
+          alert('Пароли не совпадают')
+        } else {
+          let _url = store.state.httpConfig.host + store.state.httpConfig.users
+          let _data = {
+            username: this.username,
+            password: this.password
+          }
+          console.log(_data)
+
+          this.$http.post(_url, _data).then(response => {
+            console.log(response.data)
+          })
+        }
       }
     }
   }

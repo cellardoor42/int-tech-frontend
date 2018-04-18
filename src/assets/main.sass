@@ -1,4 +1,9 @@
 @import url('//fonts.googleapis.com/css?family=Roboto:400,500,700,400italic|Material+Icons')
+@import '~vue-material/dist/theme/engine'
+
+@include md-register-theme('custom', (primary: #ffa000, accent: #ffa000))
+
+@import '~vue-material/dist/theme/all'
 
 body
     font-family: 'Roboto', sans-serif
@@ -6,9 +11,9 @@ body
 input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus
     -webkit-box-shadow: 0 0 0px 1000px #fff inset
 
-.md-accent
-    background-color: #ff8f00 !important
-    color: white !important
+//.md-accent
+//    background-color: #ff8f00 !important
+//    color: white !important
 
 .wrapper
     width: 100vw

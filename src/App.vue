@@ -9,6 +9,7 @@
   export default {
     name: 'app',
     created: function () {
+      this.$material.theming.theme = 'custom'
       let _token = this.$cookie.get('token')
       if (_token !== null) {
         let _url = store.state.httpConfig.host + store.state.httpConfig.login + '/' + _token

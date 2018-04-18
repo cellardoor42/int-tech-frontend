@@ -6,7 +6,6 @@ export default {
       console.log('LOGIN')
       let _url = store.state.httpConfig.host + store.state.httpConfig.login
       this.$http.post(_url, JSON.parse(request)).then(response => {
-        console.log(response.body)
         let _user = response.body
         if (_user !== '') {
           store.state.user = response.body

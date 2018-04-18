@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper" id="profile-wrapper">
-    <md-toolbar>
+    <md-toolbar class="md-primary">
       <span class="md-title">Hollywood | Личный кабинет</span>
       <div class="md-toolbar-section-end">
         <router-link to="/"><md-button>На главную</md-button></router-link>

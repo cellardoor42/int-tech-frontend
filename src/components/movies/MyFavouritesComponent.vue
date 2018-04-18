@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper" id="my-wrapper">
-    <md-toolbar>
+    <md-toolbar class="md-primary">
       <span class="md-title">Hollywood | Мои фильмы</span>
       <div class="md-toolbar-section-end">
         <router-link to="/"><md-button>На главную</md-button></router-link>
@@ -10,6 +10,7 @@
 
     <md-card class="content-card">
         <h1 class="md-display-2">Мои фильмы</h1>
+        <span class="md-title">Избранное</span>
 
         <!-- movies list here -->
         <div v-if="movies.length === 0" style="text-align: center; padding: 50px 0 70px 0">

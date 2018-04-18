@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper" id="index-wrapper">
-    <md-toolbar>
+    <md-toolbar class="md-primary">
       <span class="md-title">Hollywood | Домашняя страница</span>
       <div class="md-toolbar-section-end">
         <md-button v-on:click="loginHook()">{{ loginBtnTitle }}</md-button>
@@ -17,7 +17,7 @@
         </md-button>
       </md-field>
 
-      <md-button class="md-raised md-accent" v-on:click="exSearch = !exSearch">Расширенный поиск</md-button>
+      <md-button class="md-raised md-primary" v-on:click="exSearch = !exSearch">Расширенный поиск</md-button>
       <div id="exsearch-wrapper" v-if="exSearch">
         <md-field>
           <label>Режиссер</label>

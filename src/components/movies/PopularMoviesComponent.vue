@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper" id="popular-wrapper">
-    <md-toolbar>
+    <md-toolbar class="md-primary">
       <span class="md-title">Hollywood | Популярные фильмы</span>
       <div class="md-toolbar-section-end">
         <router-link to="/"><md-button>На главную</md-button></router-link>
@@ -28,7 +28,7 @@
                     </p>
                 </div>
 
-                <md-button class="md-icon-button md-list-action" v-if="userRole !== 0" v-on:click="addToFavs(movie._id)">
+                <md-button class="md-icon-button md-accent md-list-action" v-if="userRole !== 0" v-on:click="addToFavs(movie._id)">
                     <md-icon class="md-primary" v-if="!favs.includes(movie._id)">star_outline</md-icon>
                     <md-icon class="md-primary" v-if="favs.includes(movie._id)">star</md-icon>
                 </md-button>

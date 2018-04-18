@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper" id="details-wrapper">
-        <md-toolbar class="md-primary">
+        <md-toolbar>
             <span class="md-title">Hollywood | О фильме</span>
             <div class="md-toolbar-section-end">
                 <router-link to="/"><md-button>На главную</md-button></router-link>
@@ -67,7 +67,10 @@
           this.loginBtnTitle = 'Выход'
         }
       }
-      this.favs = store.state.user.favIds
+
+      if (store.state.user !== null) {
+        this.favs = store.state.user.favIds
+      }
     },
     mounted: function () {
       if (store.state.detailsMovieId === null) {

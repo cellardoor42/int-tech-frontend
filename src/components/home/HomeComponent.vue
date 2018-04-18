@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper" id="index-wrapper">
-    <md-toolbar class="md-primary">
+    <md-toolbar>
       <span class="md-title">Hollywood | Домашняя страница</span>
       <div class="md-toolbar-section-end">
         <md-button v-on:click="loginHook()">{{ loginBtnTitle }}</md-button>
@@ -187,7 +187,9 @@
         }
       }
 
-      this.favs = store.state.user.favIds
+      if (store.state.user !== null) {
+        this.favs = store.state.user.favIds
+      }
     },
     methods: {
       getMovies: function () {

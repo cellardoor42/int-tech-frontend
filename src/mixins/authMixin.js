@@ -22,6 +22,8 @@ export default {
       this.$cookie.delete('token')
       store.state.user = null
       store.state.userRole = 0
+
+      location.reload()
     },
     signUp: function () {
       console.log('SIGN UP')

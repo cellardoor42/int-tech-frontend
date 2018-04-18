@@ -8,6 +8,7 @@ export default {
     },
 
     addToFavs: function (movieId) {
+      if (movieId === undefined) return
       if (store.state.user.favIds.includes(movieId)) {
         store.state.user.favIds.splice(store.state.user.favIds.indexOf(movieId), 1)
       } else {

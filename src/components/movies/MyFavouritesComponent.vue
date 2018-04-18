@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper" id="my-wrapper">
-    <md-toolbar class="md-primary">
+    <md-toolbar>
       <span class="md-title">Hollywood | Мои фильмы</span>
       <div class="md-toolbar-section-end">
         <router-link to="/"><md-button>На главную</md-button></router-link>
@@ -20,7 +20,7 @@
             <!--<span-->
         </div>
         <md-list class="md-triple-line" v-if="movies.length > 0">
-            <md-list-item v-for="movie in movies">
+            <md-list-item class="list-item" v-for="movie in movies">
                 <md-avatar v-on:click="goToMovieDetails(movie._id)">
                     <img :src="movie.posterUrl" alt="poster">
                 </md-avatar>
@@ -80,7 +80,11 @@
           this.loginBtnTitle = 'Выход'
         }
       }
-      this.favs = store.state.user.favIds
+
+      if (store.state.user !== null) {
+        this.favs = store.state.user.favIds
+      }
+
       this.getMovies()
     },
     methods: {

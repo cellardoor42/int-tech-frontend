@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper" id="popular-wrapper">
-    <md-toolbar class="md-primary">
+    <md-toolbar>
       <span class="md-title">Hollywood | Популярные фильмы</span>
       <div class="md-toolbar-section-end">
         <router-link to="/"><md-button>На главную</md-button></router-link>
@@ -81,7 +81,9 @@
         }
       }
 
-      this.favs = store.state.user.favIds
+      if (store.state.user !== null) {
+        this.favs = store.state.user.favIds
+      }
     },
     mounted: function () {
       this.$http.get(store.state.httpConfig.host + store.state.httpConfig.movies + '?rating=10').then(response => {

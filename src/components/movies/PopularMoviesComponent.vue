@@ -96,7 +96,7 @@
           this.$router.push('/login')
         } else {
           this.loginBtnTitile = 'Вход'
-          this.logout()
+          this.logoutHook()
         }
       }
     }

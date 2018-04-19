@@ -14,6 +14,7 @@ var state = {
   user: null,
   userRole: 0,
   currentRoute: '/',
+  logoutDialog: false,
   detailsMovieId: null
 }
 

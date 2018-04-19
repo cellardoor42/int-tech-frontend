@@ -18,11 +18,15 @@ export default {
         }
       })
     },
+    logoutHook: function () {
+      store.state.logoutDialog = true
+    },
     logout: function () {
       console.log('LOGOUT')
       this.$cookie.delete('token')
       store.state.user = null
       store.state.userRole = 0
+      store.state.logoutDialog = false
 
       location.reload()
     },

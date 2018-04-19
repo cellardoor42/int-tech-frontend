@@ -29,7 +29,9 @@ Vue.http.headers.common['Accept'] = 'application/json, text/plain, */*'
 
 router.afterEach((to, from, next) => {
   document.title = to.meta.title
-  store.state.currentRoute = to.path
+  if (to.path !== '/login' && to.path !== '/sign_up') {
+    store.state.currentRoute = to.path
+  }
   console.log(store.state.currentRoute)
 })
 

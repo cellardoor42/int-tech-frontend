@@ -1,6 +1,15 @@
 <template>
   <div id="app">
     <router-view></router-view>
+
+      <md-dialog-confirm
+              :md-active.sync="showLogoutDialog"
+              md-title="Выход"
+              md-content="Вы действительно хотите выйти?"
+              md-confirm-text="Да"
+              md-cancel-text="Отмена"
+              @md-cancel="cancelLogout()"
+              @md-confirm="logout()" />
   </div>
 </template>
 
@@ -8,6 +17,21 @@
   import store from './store/store'
   export default {
     name: 'app',
+    data () {
+      return {
+        showLogoutDialog: false
+      }
+    },
+    computed: {
+      logoutDialog: function () {
+        return store.state.logoutDialog
+      }
+    },
+    watch: {
+      logoutDialog: function (newState, oldState) {
+        this.showLogoutDialog = newState
+      }
+    },
     created: function () {
       this.$material.theming.theme = 'custom'
       let _token = this.$cookie.get('token')
@@ -21,6 +45,12 @@
           }
           this.login(JSON.stringify(_request))
         })
+      }
+    },
+    methods: {
+      cancelLogout: function () {
+        this.showLogoutDialog = false
+        store.state.logoutDialog = false
       }
     }
   }

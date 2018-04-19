@@ -41,6 +41,18 @@
             </md-list-item>
         </md-list>
     </md-card>
+
+      <md-dialog-confirm
+              :md-active.sync="showDialog"
+              md-title="Удаление"
+              md-content="Вы уверены, что хотите удалить фильм из списка избранных?"
+              md-confirm-text="Подтвердить"
+              md-cancel-text="Отмена"
+              @md-cancel="onCancel"
+              @md-confirm="onConfirm" />
+
+      <!--<md-button class="md-primary md-raised" @click="active = true">Confirm</md-button>-->
+      <!--<span v-if="value">Value: {{ value }}</span>-->
   </div>
 </template>
 
@@ -53,7 +65,9 @@
       return {
         loginBtnTitle: '',
         movies: [],
-        favs: []
+        favs: [],
+        showDialog: false,
+        movieId: null
       }
     },
     computed: {
@@ -109,8 +123,16 @@
         }
       },
       addToFavsHook: function (movieId) {
-        this.addToFavs(movieId)
+        this.movieId = movieId
+        this.showDialog = true
+      },
+      onConfirm: function () {
+        this.addToFavs(this.movieId)
+        this.showDialog = false
         this.getMovies()
+      },
+      onCancel: function () {
+        this.showDialog = false
       }
     }
   }

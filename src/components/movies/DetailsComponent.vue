@@ -13,6 +13,8 @@
                 <md-button class="md-icon-button md-fab md-accent" v-if="userRole !== 0" v-on:click="addToFavs(movie._id)">
                     <md-icon class="md-primary" v-if="!favs.includes(movie._id)">star_outline</md-icon>
                     <md-icon class="md-primary" v-if="favs.includes(movie._id)">star</md-icon>
+                    <md-tooltip md-direction="right" v-if="!favs.includes(movie._id)">Добавить в избранное</md-tooltip>
+                    <md-tooltip md-direction="right" v-if="favs.includes(movie._id)">Удалить из избранного</md-tooltip>
                 </md-button>
             </h1>
             <img class="poster" :src="movie.posterUrl">

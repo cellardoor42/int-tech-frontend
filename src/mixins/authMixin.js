@@ -9,9 +9,10 @@ export default {
         let _user = response.body
         if (_user !== '') {
           store.state.user = response.body
-          store.state.userRole = parseInt(_user.userRole)
+          store.state.userRole = parseInt(_user.role)
+          console.log(store.state.userRole)
           this.$cookie.set('token', _user._id)
-          this.$router.push('/')
+          this.$router.push(store.state.currentRoute)
         } else {
           console.log('login err')
         }

@@ -29,6 +29,9 @@
                 <md-button class="md-icon-button md-list-action" v-on:click="edit = !edit">
                     <md-icon class="md-primary">edit</md-icon>
                 </md-button>
+                <md-button class="md-icon-button md-list-action" v-if="userRole === 2">
+                    <md-icon class="md-primary">settings</md-icon>
+                </md-button>
             </md-list-item>
         </md-list>
 
@@ -47,10 +50,24 @@
                 <md-input v-model="passwordRepeat" type="password"></md-input>
             </md-field>
             <div style="text-align: right">
-                <md-button class="md-raised md-primary" v-on:click="submit()">Сохранить изменения</md-button>
+                <md-button class="md-raised md-primary" v-on:click="submitHook()">Сохранить изменения</md-button>
             </div>
         </div>
     </md-card>
+
+      <md-dialog-alert
+              :md-active.sync="showPasswdDialog"
+              md-content="Пароли не совпадают"
+              md-confirm-text="Закрыть" />
+
+      <md-dialog-confirm
+              :md-active.sync="showConfirmDialog"
+              md-title="Редактировать профиль"
+              md-content="Сохранить изменения в ваших данных?"
+              md-confirm-text="ОК"
+              md-cancel-text="Отмена"
+              @md-cancel="showConfirmDialog = false"
+              @md-confirm="submit()" />
   </div>
 </template>
 
@@ -68,7 +85,9 @@
         passwordRepeat: '',
         role: '',
         letterPlaceholder: null,
-        edit: false
+        edit: false,
+        showPasswdDialog: false,
+        showConfirmDialog: false
       }
     },
     computed: {
@@ -135,21 +154,29 @@
           this.$router.push('/')
         }
       },
-      submit: function () {
+      submitHook: function () {
         if (this.password !== this.passwordRepeat) {
-          alert('Пароли не совпадают')
+          this.showPasswdDialog = true
         } else {
-          let _url = store.state.httpConfig.host + '/profile'
-          let _data = {
-            userId: this.$cookie.get('token'),
-            username: this.username,
-            password: this.password
-          }
-
-          this.$http.post(_url, _data).then(response => {
-            console.log(response.data)
-          })
+          this.showConfirmDialog = true
         }
+      },
+      submit: function () {
+        let _url = store.state.httpConfig.host + '/profile'
+        let _data = {
+          userId: this.$cookie.get('token'),
+          username: this.username,
+          password: this.password
+        }
+
+        this.$http.post(_url, _data).then(response => {
+          console.log(response.data)
+          // store.state.user = response.data
+          // this.userData = response.data
+          // location.reload()
+          this.userData.username = _data.username
+          this.userData.password = _data.password
+        })
       }
     }
   }

@@ -62,10 +62,10 @@
             username: this.username,
             password: this.password
           }
-          console.log(_data)
 
           this.$http.post(_url, _data).then(response => {
             console.log(response.data)
+            this.$router.push('/login')
           })
         }
       }

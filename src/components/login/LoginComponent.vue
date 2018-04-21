@@ -28,6 +28,12 @@
       </div>
     </md-card>
     </div>
+
+      <md-dialog-alert id="errAlert" style="display: none"
+              md-title="Ошибка"
+              md-content="Не удалось войти в аккаунт. Проверьте корректность введенных данных"
+              md-confirm-text="ОК" />
+
   </div>
 </template>
 
@@ -37,7 +43,7 @@
     data () {
       return {
         username: '',
-        password: ''
+        password: '',
       }
     },
     methods: {

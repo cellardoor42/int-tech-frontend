@@ -9,7 +9,7 @@
     </md-toolbar>
 
     <md-card class="content-card">
-        <h1 class="md-display-2">Топ 10</h1>
+        <h1 class="md-display-2">10 звезд</h1>
         <span class="md-title">Рейтинг самых популярных фильмов</span>
 
         <!-- movies list here -->

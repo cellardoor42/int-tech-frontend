@@ -109,7 +109,6 @@
           let _url = store.state.httpConfig.host + store.state.httpConfig.movies + '/' + _id
           this.$http.get(_url).then(response => {
             this.movies.push(response.body)
-            this.movies[i].rating = parseInt(this.movies[i].rating)
           })
         }
       },

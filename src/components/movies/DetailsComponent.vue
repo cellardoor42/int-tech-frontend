@@ -86,7 +86,7 @@
         let _url = store.state.httpConfig.host + store.state.httpConfig.movies + '/' + store.state.detailsMovieId
         this.$http.get(_url).then(response => {
           this.movie = response.body
-          this.movieData.rating = parseInt(this.movieData.rating)
+          // this.movieData.rating = parseInt(this.movieData.rating)
         })
       },
       loginHook: function () {

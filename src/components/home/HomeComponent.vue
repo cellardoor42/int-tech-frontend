@@ -7,7 +7,7 @@
       </div>
     </md-toolbar>
 
-    <md-card id="search-card">
+    <md-card class="content-card" id="search-card">
       <md-field>
         <md-icon>search</md-icon>
         <label>Поиск</label>

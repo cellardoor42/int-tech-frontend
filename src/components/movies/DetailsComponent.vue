@@ -79,13 +79,16 @@
         console.log('No id')
         return
       }
-      let _url = store.state.httpConfig.host + store.state.httpConfig.movies + '/' + store.state.detailsMovieId
-      this.$http.get(_url).then(response => {
-        this.movie = response.body
-        this.movie.rating = parseInt(this.movie.rating)
-      })
+      this.getMovie()
     },
     methods: {
+      getMovie: function () {
+        let _url = store.state.httpConfig.host + store.state.httpConfig.movies + '/' + store.state.detailsMovieId
+        this.$http.get(_url).then(response => {
+          this.movie = response.body
+          this.movieData.rating = parseInt(this.movieData.rating)
+        })
+      },
       loginHook: function () {
         if (store.state.userRole === 0) {
           this.$router.push('/login')
@@ -101,4 +104,11 @@
 <style lang="sass">
   #details-wrapper
     background-image: url('../../assets/images/sharegrid-464364-unsplash.jpg')
+
+  #edit-dialog
+    width: 60vw
+
+  #edit-dialog-content
+    width: 40vw
+    margin: 0 10vw
 </style>

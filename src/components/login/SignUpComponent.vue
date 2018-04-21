@@ -31,6 +31,12 @@
       </div>
     </md-card>
     </div>
+
+      <md-dialog-alert
+              :md-active.sync="showPasswdDialog"
+              md-content="Пароли не совпадают"
+              md-confirm-text="Закрыть" />
+
   </div>
 </template>
 
@@ -42,13 +48,14 @@
       return {
         username: '',
         password: '',
-        passwordRepeat: ''
+        passwordRepeat: '',
+        showPasswdDialog: false
       }
     },
     methods: {
       submit: function () {
         if (this.password !== this.passwordRepeat) {
-          alert('Пароли не совпадают')
+          this.showPasswdDialog = true
         } else {
           let _url = store.state.httpConfig.host + store.state.httpConfig.users
           let _data = {

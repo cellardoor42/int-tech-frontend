@@ -103,7 +103,8 @@
 
 <style lang="sass">
   #details-wrapper
-    background-image: url('../../assets/images/sharegrid-464364-unsplash.jpg')
+    /*background-image: url('../../assets/images/sharegrid-464364-unsplash.jpg')*/
+    background-image: url('https://raw.githubusercontent.com/cellardoor42/int-tech-frontend/master/src/assets/images/sharegrid-464364-unsplash.jpg')
 
   #edit-dialog
     width: 60vw

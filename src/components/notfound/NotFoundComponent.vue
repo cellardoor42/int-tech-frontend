@@ -45,7 +45,8 @@
 
 <style lang="sass">
   #not-found-wrapper
-    background-image: url('../../assets/images/timothy-eberly-382663-unsplash.jpg')
+    /*background-image: url('../../assets/images/timothy-eberly-382663-unsplash.jpg')*/
+    background-image: url('https://raw.githubusercontent.com/cellardoor42/int-tech-frontend/master/src/assets/images/timothy-eberly-382663-unsplash.jpg')
 
   #not-found-card
     width: 40vw

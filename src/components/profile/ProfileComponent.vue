@@ -248,7 +248,8 @@
 
 <style lang="sass">
   #profile-wrapper
-    background-image: url('../../assets/images/mat-weller-86006-unsplash.jpg')
+    /*background-image: url('../../assets/images/mat-weller-86006-unsplash.jpg')*/
+    background-image: url('https://raw.githubusercontent.com/cellardoor42/int-tech-frontend/master/src/assets/images/mat-weller-86006-unsplash.jpg')
 
   .profile-item .md-list-item-content
     cursor: default !important

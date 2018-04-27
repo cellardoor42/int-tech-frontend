@@ -60,7 +60,8 @@
 
 <style lang="sass">
   #login-wrapper
-    background-image: url('../../assets/images/noom-peerapong-30948-unsplash.jpg')
+    /*background-image: url('../../assets/images/noom-peerapong-30948-unsplash.jpg')*/
+    background-image: url('https://raw.githubusercontent.com/cellardoor42/int-tech-frontend/master/src/assets/images/noom-peerapong-30948-unsplash.jpg')
 
   #login-card
     padding: 30px

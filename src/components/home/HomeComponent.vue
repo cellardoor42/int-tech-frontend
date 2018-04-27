@@ -248,7 +248,8 @@
 
 <style lang="sass">
   #index-wrapper
-    background-image: url('../../assets/images/caleb-george-69656-unsplash.jpg')
+    /*background-image: url('../../assets/images/caleb-george-69656-unsplash.jpg')*/
+    background-image: url('https://raw.githubusercontent.com/cellardoor42/int-tech-frontend/master/src/assets/images/caleb-george-69656-unsplash.jpg')
 
   #search-card
     width: 70vw

@@ -139,8 +139,6 @@
 
 <style lang="sass">
   #my-wrapper
-    background-image: url('../../assets/images/matt-alaniz-115598-unsplash.jpg')
-
-  #my-card
-
+    /*background-image: url('../../assets/images/matt-alaniz-115598-unsplash.jpg')*/
+    background-image: url('https://raw.githubusercontent.com/cellardoor42/int-tech-frontend/master/src/assets/images/matt-alaniz-115598-unsplash.jpg')
 </style>

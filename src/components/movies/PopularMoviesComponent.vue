@@ -105,5 +105,6 @@
 
 <style lang="sass">
   #popular-wrapper
-    background-image: url('../../assets/images/krists-luhaers-543526-unsplash.jpg')
+    /*background-image: url('../../assets/images/krists-luhaers-543526-unsplash.jpg')*/
+    background-image: url('https://github.com/cellardoor42/int-tech-frontend/blob/master/src/assets/images/krists-luhaers-543526-unsplash.jpg?raw=true')
 </style>

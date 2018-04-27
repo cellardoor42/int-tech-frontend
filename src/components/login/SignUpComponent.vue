@@ -75,7 +75,8 @@
 
 <style lang="sass">
   #signup-wrapper
-    background-image: url('../../assets/images/igor-ovsyannykov-440148-unsplash.jpg')
+    /*background-image: url('../../assets/images/igor-ovsyannykov-440148-unsplash.jpg')*/
+    background-image: url('https://raw.githubusercontent.com/cellardoor42/int-tech-frontend/master/src/assets/images/igor-ovsyannykov-440148-unsplash.jpg')
 
   #signup-card
     padding: 30px

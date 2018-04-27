@@ -4,6 +4,8 @@ import App from './App.vue'
 import router from './router'
 import store from './store/store'
 import VueCookie from 'vue-cookie'
+import * as VueGoogleMaps from 'vue2-google-maps'
+
 
 import VueMaterial from 'vue-material'
 
@@ -17,6 +19,12 @@ import authMixin from './mixins/authMixin'
 Vue.use(VueResource)
 Vue.use(VueMaterial)
 Vue.use(VueCookie)
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: 'AIzaSyDn0MTdzjLn9-q9Nd_b3VMqZ9hCygPRPew',
+    libraries: 'places'
+  }
+})
 
 Vue.mixin(detailsMixin)
 Vue.mixin(authMixin)

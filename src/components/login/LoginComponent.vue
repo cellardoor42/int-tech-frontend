@@ -19,12 +19,12 @@
 
       <md-card-actions>
         <!--<router-link to="/"><md-button>Войти</md-button></router-link>-->
-          <md-button v-on:click="beforeLogin()">Войти</md-button>
+          <md-button class="md-raised md-primary" v-on:click="beforeLogin()">Войти</md-button>
       </md-card-actions>
 
       <div style="text-align: center; margin-top: 50px;">
         <span>Нет учетной записи?</span><br>
-        <router-link to="/sign_up"><md-button class="md-raised md-accent">Зарегистрироваться</md-button></router-link>
+        <router-link to="/sign_up"><md-button>Зарегистрироваться</md-button></router-link>
       </div>
     </md-card>
     </div>

@@ -22,12 +22,12 @@
       </md-card-content>
 
       <md-card-actions>
-        <md-button v-on:click="submit()">Зарегистрироваться</md-button>
+        <md-button class="md-raised md-primary" v-on:click="submit()">Зарегистрироваться</md-button>
       </md-card-actions>
 
       <div style="text-align: center; margin-top: 50px;">
         <span>Уже зарегистрированы?</span><br>
-        <router-link to="/login"><md-button class="md-raised md-accent">Войти</md-button></router-link>
+        <router-link to="/login"><md-button>Войти</md-button></router-link>
       </div>
     </md-card>
     </div>

@@ -5,7 +5,8 @@ Vue.use(Vuex)
 
 var state = {
   httpConfig: {
-    host: 'http://localhost:8000',
+    // host: 'http://localhost:8000',
+    host: 'https://pure-river-78957.herokuapp.com',
     movies: '/movies',
     users: '/users',
     userRoles: '/user_roles',
